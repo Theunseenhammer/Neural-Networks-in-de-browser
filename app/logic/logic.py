@@ -1,3 +1,5 @@
+#Installeer Numpy!
+
 import numpy as np
 
 #Grootte van de dataset
@@ -47,8 +49,9 @@ if __name__ == "__main__":
                                 [1,1,1,0,0,0,0,0]])
 
     training_outputs = np.array([[1,0,1,1,0,0,1,0]]).T
-
-    #training uitvoeren met de inputs, op de outputs
+    
+    print( "trainen van Neural network, even geduld...")
+    #training uitvoeren met de inputs, op de outputs, voor 50000 iteraties
     neural_network.train(training_inputs, training_outputs, 50000)
 
     run = True
@@ -59,7 +62,9 @@ if __name__ == "__main__":
         inp3 = str(input("Waarde 3: "))
 
         print( "Nieuwe waarde uit uw situatie" )
-        print(neural_network.think(np.array([inp1,inp2,inp3,0,0,0,0,0])))
+        #onze output na de training.
+        output = neural_network.think(np.array([inp1,inp2,inp3,0,0,0,0,0]))
+        print(output)
         
         option = str(input("Nieuwe test?(Y/n): ")).lower()
         if option == "y":
