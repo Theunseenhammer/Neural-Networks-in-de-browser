@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "GT-regular";
+    src: url(../fonts/GTWalsheimPro-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "GT-medium";
+    src: url(../fonts/GTWalsheimPro-Medium.ttf) format("truetype");
+}
+
+:root {
+    --font: 'GT-regular';
+    --font-medium: 'GT-medium';
+}
+
+body {
+    font-family: 'GT-regular';
+}

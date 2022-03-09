@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstrator</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+
+<body>
+    <div class="hero-page-wrapper">
+        <div class="hero-landing">
+            <div class="hero-text-wrapper column-start-2">
+                <div class="hero-text-title">
+                    Test nu onze demonstrator van een simpel neuraal netwerk
+                </div>
+                <div class="hero-text-desc">
+                    Voor deze demonstrator is een simpel neuraal netwerk getrained met de bedoeling om het volgende getal in een sequentie te raden. <br><br>
+                    <U> Vul een reeks getallen in en probeer hetzelf!</U>
+                </div>
+            </div>
+
+            <form action="" method="post" novalidate>
+                <div class="hero-input-wrapper">
+                    <div class="hero-input-label">
+                        Getal 1
+                    </div>
+                    <input type="number" class="hero-input-field" name="input1" min="0" max="1">
+
+
+                    <div class="hero-input-label">
+                        Getal 2
+                    </div>
+                    <input type="number" class="hero-input-field" name="input2" min="0" max="1">
+
+
+                    <div class="hero-input-label">
+                        Getal 3
+                    </div>
+                    <input type="number" class="hero-input-field" name="input3" min="0" max="1">
+
+                    <div class="hero-output-label">
+                        <a> De output van deze reeks getallen is:  <br> <strong> {{output}}</strong>  </a>
+                    </div>
+                    <br>
+                    <input type="submit" class="hero-button"></button>
+
+                </div>
+            </form>
+
+        </div>
+        <footer class="footer-wrapper">
+            <img class="zuyd-logo" href="https://www.zuyd.nl/" src="../static/images/LogoZUYD-footer.png">
+            <div class="made-by">
+                Gemaakt door: <strong> Max Kleinman, Jeremy Aué, Roy Wendries & Tonito Kusters-Hernandez </strong>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
