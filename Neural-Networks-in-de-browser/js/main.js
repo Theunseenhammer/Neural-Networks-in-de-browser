@@ -86,16 +86,16 @@ function TrainNN() {
         }
     ],
         {
-            iterations: 200
+            iterations: 1000
         })
 
     console.log("Training is complete")
-    //const json = network.toJSON();
-    //var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(json));
-    //var dlAnchorElem = document.getElementById('downloadAnchorElem');
-    //dlAnchorElem.setAttribute("href", dataStr);
-    //dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
-    //dlAnchorElem.click();
+    const jsonTest = network.toJSON();
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonTest));
+    var dlAnchorElem = document.getElementById('downloadAnchorElem');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
+    dlAnchorElem.click();
 }
 //network.toFunction()
 
@@ -121,7 +121,6 @@ function EnterData() {
     output = (counter + ': ' + output)
     console.log(`Category: ${output}`)
     document.getElementById('Output-NN').innerHTML = output
-
 }
 
 
