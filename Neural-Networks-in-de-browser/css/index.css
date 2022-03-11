@@ -1,0 +1,87 @@
+body {
+    color: white;
+}
+
+
+/*------------ index-page-wrapper ------------*/
+
+.index-page-wrapper {
+    display: grid;
+    grid-template-rows: 1fr 80px;
+    text-align: center;
+}
+
+
+/*------------ NN-wrapper ------------*/
+
+.nn-wrapper {
+    background-color: var(--main-bord-red);
+    border-radius: 10px 10px;
+    width: 500px;
+    justify-self: center;
+}
+
+.nn-title {
+    text-shadow: var(--main-shadow);
+}
+
+.nn-desc {
+    color: rgb(243, 243, 243);
+}
+
+.nn-output {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/*------------ Interactives ------------*/
+
+input[type=text] {
+    font-size: 16px;
+    width: 50%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    color: white;
+    outline: none;
+    font-family: 'GT-regular';
+    text-align: center;
+}
+
+button {
+    border: solid var(--main-bord-red);
+    transition: all .2s ease;
+    background-color: white;
+    border-radius: 100px;
+    color: var(--main-bord-red);
+    font-size: 20px;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: var(--main-bord-red);
+    color: white;
+    border: solid white;
+}
+
+
+/*------------ footer-wrapper ------------*/
+
+.footer-wrapper {
+    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+}
+
+.zuyd-logo,
+.made-by {
+    align-self: center;
+    justify-self: center;
+}

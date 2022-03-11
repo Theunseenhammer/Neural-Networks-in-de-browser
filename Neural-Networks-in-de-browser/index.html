@@ -14,17 +14,35 @@
 </head>
 
 <body>
-    <button id="Train-NN">Train neural network</button>
-    <input type="text" id="Input-NN" placeholder="Enter a scentence">
-    <button id="Submit-input">Submit</button>
-    <!--button onclick="document.getElementById('file-input').click();">Open</button>
+
+    <div class="index-page-wrapper">
+        <div class="nn-wrapper">
+            <h1 class="nn-title"><u> Try our new neural network</u></h1>
+            <h3 class="nn-desc">This Neural Network will try and guess if your sentence is talking about frontend or backend<br><br>1. Train the model<br>2. Try and enter a sentence</h3>
+
+            <button id="Train-NN">Train neural network</button><br>
+            <input type="text" id="Input-NN" placeholder="Enter a scentence">
+            <button id="Submit-input">Submit</button>
+            <!--button onclick="document.getElementById('file-input').click();">Open</button>
     <input id="file-input" type="file" name="name" style="display: none;" /-->
-    <h1 id="Output-NN">Hello World!</h1>
-    <a id="downloadAnchorElem" style="display:none"></a>
-    <!--form name="File-search" onsubmit="return false">
+            <div class="nn-output">
+                <h1>Output:</h1>
+                <h1 id="Output-NN"></h1>
+            </div>
+            <a id="downloadAnchorElem" style="display:none"></a>
+            <!--form name="File-search" onsubmit="return false">
         <input type ="text" id="query" name ="query" placeholder ="search"/>
         <button id="retrieve-file">Choose file</button>
     </form>-->
+        </div>
+
+        <footer class="footer-wrapper">
+            <img class="zuyd-logo" href="https://www.zuyd.nl/" src="./assets/icons/LogoZUYD-footer.png">
+            <div class="made-by">
+                Gemaakt door: <strong> Max Kleinman, Jeremy Aué, Roy Wendries & Tonito Kusters-Hernandez </strong>
+            </div>
+        </footer>
+    </div>
 </body>
 
 <script type="module" src="../js/main.js"></script>
