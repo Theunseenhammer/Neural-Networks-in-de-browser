@@ -5,10 +5,16 @@ import { recurrent } from 'brain.js';
 //import data from '../test_Dataset.json';
 const network = new recurrent.LSTM();
 //const json = network.toJSON();
-function TrainNN() {
+
+//The file
+var uploadedJsonFile = {}
+
+//The content
+var uploadedJsonData = {}
+
+function trainNN() {
     console.log("Training has begun")
-    network.train([
-        {
+    network.train([{
             input: "the user interface component is fixed",
             output: "frontend"
         },
@@ -84,10 +90,9 @@ function TrainNN() {
             input: "the web browser loads dynamic webpages slowly",
             output: "frontend"
         }
-    ],
-        {
-            iterations: 1000
-        })
+    ], {
+        iterations: 1000
+    })
 
     console.log("Training is complete")
     const jsonTest = network.toJSON();
@@ -97,9 +102,9 @@ function TrainNN() {
     dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
     dlAnchorElem.click();
 }
-//network.toFunction()
 
-function EnterData() {
+
+function enterData() {
     const json = network.toJSON();
     //const json = document.getElementById('file-input');
     console.log(json)
@@ -110,11 +115,9 @@ function EnterData() {
     console.log('raw: ' + output)
     if (output.includes("frontend")) {
         output = "frontend"
-    }
-    else if (output.includes("backend")) {
+    } else if (output.includes("backend")) {
         output = "backend"
-    }
-    else {
+    } else {
         output = "Error"
     }
     counter++
@@ -124,6 +127,45 @@ function EnterData() {
 }
 
 
+function showData() {
+    uploadedJsonFile = document.getElementById('Upload-NN').files[0]
+    console.log(uploadedJsonFile)
+    console.log(`Name: ${uploadedJsonFile.name}\nFile Type: ${uploadedJsonFile.type}\nFile Size: ${formatBytes(uploadedJsonFile.size)}`)
+    fileToJSON(uploadedJsonFile)
+}
+
+//Starts filereader and saves found data to var UploadedJsonData 
+function fileToJSON(file) {
+    var reader = new FileReader()
+    reader.onload = onReaderLoad
+    reader.readAsText(file)
+}
+
+function onReaderLoad(file) {
+    var obj = JSON.parse(file.target.result)
+    console.log(obj)
+    uploadedJsonData = obj
+}
+
+
+
+//Convert bytes to kb
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+
 var counter = 0
-document.getElementById('Submit-input').addEventListener('click', EnterData)
-document.getElementById('Train-NN').addEventListener('click', TrainNN)
+document.getElementById('Submit-input').addEventListener('click', enterData)
+document.getElementById('Train-NN').addEventListener('click', trainNN)
+
+//On upload(change) execute function LogData
+document.getElementById('Upload-NN').addEventListener('change', showData, false)

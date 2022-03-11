@@ -18,3 +18,41 @@
 body {
     font-family: 'GT-regular';
 }
+
+
+/*------------ Interactives ------------*/
+
+input[type=file] {
+    display: none;
+}
+
+input[type=text] {
+    font-size: 16px;
+    width: 50%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    color: white;
+    outline: none;
+    font-family: 'GT-regular';
+    text-align: center;
+}
+
+button {
+    border: solid var(--main-bord-red);
+    transition: all .2s ease;
+    background-color: white;
+    border-radius: 100px;
+    color: var(--main-bord-red);
+    font-size: 20px;
+    margin: 10px;
+    padding: 6px;
+}
+
+button:hover {
+    background-color: var(--main-bord-red);
+    color: white;
+    border: solid white;
+}
