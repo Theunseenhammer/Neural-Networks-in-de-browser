@@ -2,9 +2,14 @@ import { recurrent } from 'brain.js';
 //const fs = require("fs");
 //import { fs } from 'fs';  
 // provide optional config object (or undefined). Defaults shown.
-//import data from '../test_Dataset.json';
+import data from '../test_Dataset.json';
 const network = new recurrent.LSTM();
 //const json = network.toJSON();
+
+var trainingData = data.map(item => ({
+    input: item.text,
+    output: item.category
+  }));
 
 //The file
 var uploadedJsonFile = {}
@@ -14,83 +19,7 @@ var uploadedJsonData = {}
 
 function trainNN() {
     console.log("Training has begun")
-    network.train([{
-            input: "the user interface component is fixed",
-            output: "frontend"
-        },
-        {
-            input: "the css file look inituitive",
-            output: "frontend"
-        },
-        {
-            input: "i need a few ui designs",
-            output: "frontend"
-        },
-        {
-            input: "the database has issues",
-            output: "backend"
-        },
-        {
-            input: "the button is centered",
-            output: "frontend"
-        },
-        {
-            input: "make it clickable",
-            output: "frontend"
-        },
-        {
-            input: "i did the api integration",
-            output: "backend"
-        },
-        {
-            input: "a driver code should have less memory usgae",
-            output: "backend"
-        },
-        {
-            input: "it needs more memory",
-            output: "backend"
-        },
-        {
-            input: "code with responsive design in users interface",
-            output: "frontend"
-        },
-        {
-            input: "navigate the website easily",
-            output: "frontend"
-        },
-        {
-            input: "user login and authentication",
-            output: "backend"
-        },
-        {
-            input: "forms and dropdowns lists",
-            output: "frontend"
-        },
-        {
-            input: "username password email are stored",
-            output: "backend"
-        },
-        {
-            input: "programming loading animation",
-            output: "frontend"
-        },
-        {
-            input: "mysql, mongo, firebase databases",
-            output: "backend"
-        },
-        {
-            input: "restful api is useful with backend",
-            output: "backend"
-        },
-        {
-            input: "data access layer is not presentation layer",
-            output: "backend"
-        },
-        {
-            input: "the web browser loads dynamic webpages slowly",
-            output: "frontend"
-        }
-    ], {
+    network.train(trainingData, {
         iterations: 1000
     })
 
@@ -105,11 +34,7 @@ function trainNN() {
 
 
 function enterData() {
-    const json = network.toJSON();
-    //const json = document.getElementById('file-input');
-    console.log(json)
     const val = document.getElementById('Input-NN').value;
-    network.fromJSON(json)
     var output = network.run(val)
     console.log(val)
     console.log('raw: ' + output)
@@ -145,9 +70,8 @@ function onReaderLoad(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
     uploadedJsonData = obj
+    network.fromJSON(uploadedJsonData)
 }
-
-
 
 //Convert bytes to kb
 function formatBytes(bytes, decimals = 2) {
