@@ -1,26 +1,41 @@
 import { recurrent } from 'brain.js';
-//const fs = require("fs");
-//import { fs } from 'fs';  
-// provide optional config object (or undefined). Defaults shown.
-import data from '../test_Dataset.json';
+//create new LSTM network called network
 const network = new recurrent.LSTM();
-//const json = network.toJSON();
-
-var trainingData = data.map(item => ({
-    input: item.text,
-    output: item.category
-  }));
-
+//Counter to know if output has changed
+var counter = 0
+//amount of training iterations
+var Iteration = 200
+//Error threshold selected
+var ErrorThreshold = 0.005
+//maped training data
+var trainingData
 //The file
 var uploadedJsonFile = {}
-
 //The content
 var uploadedJsonData = {}
+//Iterations slider
+var slider = document.getElementById("Input-Iterations");
+var output = document.getElementById("Iterations-Show");
+output.value = slider.value; // Display the default slider value
 
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.value = this.value;
+  Iteration = this.value
+}
+
+//Train a NN
 function trainNN() {
-    console.log("Training has begun")
-    network.train(trainingData, {
-        iterations: 1000
+    if (trainingData == null) {
+        window.alert("Please select a Dataset befor training.");
+    } else{
+        console.log("Training has begun")
+        console.log ("Number of iterations used:" + Iteration)
+        console.log ("Error Threshold used:" + ErrorThreshold)
+        network.train(trainingData, {
+        iterations: Iteration,
+        errorThresh: ErrorThreshold,
+        log: true
     })
 
     console.log("Training is complete")
@@ -30,8 +45,8 @@ function trainNN() {
     dlAnchorElem.setAttribute("href", dataStr);
     dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
     dlAnchorElem.click();
+    }
 }
-
 
 function enterData() {
     const val = document.getElementById('Input-NN').value;
@@ -54,15 +69,28 @@ function enterData() {
 
 function showData() {
     uploadedJsonFile = document.getElementById('Upload-NN').files[0]
+    var index = "NN"
     console.log(uploadedJsonFile)
     console.log(`Name: ${uploadedJsonFile.name}\nFile Type: ${uploadedJsonFile.type}\nFile Size: ${formatBytes(uploadedJsonFile.size)}`)
-    fileToJSON(uploadedJsonFile)
+    fileToJSON(uploadedJsonFile,index)
 }
 
-//Starts filereader and saves found data to var UploadedJsonData 
-function fileToJSON(file) {
+//Starts filereader and saves found data to var UploadedJsonData
+function loadDataset(){
+    uploadedJsonFile = document.getElementById('Upload-Dataset').files[0]
+    var index = "DS"
+    console.log(uploadedJsonFile)
+    console.log(`Name: ${uploadedJsonFile.name}\nFile Type: ${uploadedJsonFile.type}\nFile Size: ${formatBytes(uploadedJsonFile.size)}`)
+    fileToJSON(uploadedJsonFile,index)
+}
+
+function fileToJSON(file,what) {
     var reader = new FileReader()
-    reader.onload = onReaderLoad
+    if (what == "DS"){
+        reader.onload = onReaderLoadDS
+    } else{
+        reader.onload = onReaderLoad
+    }
     reader.readAsText(file)
 }
 
@@ -71,6 +99,20 @@ function onReaderLoad(file) {
     console.log(obj)
     uploadedJsonData = obj
     network.fromJSON(uploadedJsonData)
+}
+
+function onReaderLoadDS(file) {
+    var obj = JSON.parse(file.target.result)
+    console.log(obj)
+    mapDS(obj)    
+}
+
+function mapDS(file) {
+    trainingData = file.map(item => ({
+        input: item.text,
+        output: item.category
+      }));
+    console.log(trainingData)
 }
 
 //Convert bytes to kb
@@ -86,10 +128,25 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+function ChangeIterations() {
+    Iteration = document.getElementById('Iterations-Show').value;
+    console.log ("Number of iterations selected:" + Iteration)
+}
 
-var counter = 0
+function ErrorThresh() {
+    ErrorThreshold = document.getElementById('Input-ErrorThresh').value;
+    console.log ("Error Threshold selected:" + ErrorThreshold)
+}
+
 document.getElementById('Submit-input').addEventListener('click', enterData)
+
 document.getElementById('Train-NN').addEventListener('click', trainNN)
 
 //On upload(change) execute function LogData
 document.getElementById('Upload-NN').addEventListener('change', showData, false)
+
+document.getElementById('Upload-Dataset').addEventListener('change', loadDataset, false)
+
+document.getElementById('Iterations-Show').addEventListener('change', ChangeIterations)
+
+document.getElementById('Submit-ErrorThresh').addEventListener('click', ErrorThresh)

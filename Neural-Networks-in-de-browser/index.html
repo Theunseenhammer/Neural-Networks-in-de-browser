@@ -21,13 +21,27 @@
             <h3 class="nn-desc">This Neural Network will try and guess if your sentence is talking about frontend or backend<br><br>1. Train the model<br>2. Try and enter a sentence</h3>
 
             <label class="upload-wrapper">
+                <input type="file" id="Upload-Dataset">
+                Upload Dataset
+            </label>
+
+            <label class="upload-wrapper">
                 <input type="file" id="Upload-NN">
                 Load neural network
             </label>
             <button id="Train-NN">Train neural network</button><br>
+
+            <div class="slidecontainer">
+                <h3>Select Iterations</h3>
+                <input type="range" min="1" max="10000" value="200" class="slider" id="Input-Iterations">
+                <input type="text" id="Iterations-Show">
+            </div>
+
+            <input type="text" id="Input-ErrorThresh" placeholder="Enter Error threshold (0-1)">
+            <button id="Submit-ErrorThresh">Submit</button>
+
             <input type="text" id="Input-NN" placeholder="Enter a scentence">
             <button id="Submit-input">Submit</button>
-
             <div class="nn-output">
                 <h1>Output:</h1>
                 <h1 id="Output-NN"></h1>
