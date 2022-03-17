@@ -1,6 +1,5 @@
 import { recurrent } from 'brain.js';
-//create new LSTM network called network
-const network = new recurrent.LSTM();
+var network
 //Counter to know if output has changed
 var counter = 0
 //amount of training iterations
@@ -27,11 +26,13 @@ slider.oninput = function() {
 //Train a NN
 function trainNN() {
     if (trainingData == null) {
-        window.alert("Please select a Dataset befor training.");
+        window.alert("Please select a Dataset before training.");
     } else{
+        //create new LSTM network called network
+        network = new recurrent.LSTM();
         console.log("Training has begun")
-        console.log ("Number of iterations used:" + Iteration)
-        console.log ("Error Threshold used:" + ErrorThreshold)
+        console.log ("Number of iterations used: " + Iteration)
+        console.log ("Error Threshold used: " + ErrorThreshold)
         network.train(trainingData, {
         iterations: Iteration,
         errorThresh: ErrorThreshold,
@@ -49,21 +50,25 @@ function trainNN() {
 }
 
 function enterData() {
-    const val = document.getElementById('Input-NN').value;
-    var output = network.run(val)
-    console.log(val)
-    console.log('raw: ' + output)
-    if (output.includes("frontend")) {
-        output = "frontend"
-    } else if (output.includes("backend")) {
-        output = "backend"
-    } else {
-        output = "Error"
+    if (typeof network == 'undefined') {
+        window.alert("Please select or train a NN before testing.");
+    } else{
+        const val = document.getElementById('Input-NN').value;
+        var output = network.run(val)
+        console.log(val)
+        console.log('raw: ' + output)
+        if (output.includes("frontend")) {
+            output = "frontend"
+        } else if (output.includes("backend")) {
+            output = "backend"
+        } else {
+            output = "Error"
+        }
+        counter++
+        output = (counter + ': ' + output)
+        console.log(`Category: ${output}`)
+        document.getElementById('Output-NN').innerHTML = output
     }
-    counter++
-    output = (counter + ': ' + output)
-    console.log(`Category: ${output}`)
-    document.getElementById('Output-NN').innerHTML = output
 }
 
 
@@ -98,6 +103,8 @@ function onReaderLoad(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
     uploadedJsonData = obj
+    //create new LSTM network called network
+    network = new recurrent.LSTM();
     network.fromJSON(uploadedJsonData)
 }
 
