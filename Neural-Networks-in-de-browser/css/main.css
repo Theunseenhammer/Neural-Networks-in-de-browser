@@ -13,10 +13,93 @@
     --font-medium: 'GT-medium';
     --main-bord-red: #800000;
     --main-shadow: 0px 19px 18px rgba(0, 0, 0, 0.25);
+    --second-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 body {
     font-family: 'GT-regular';
+    color: white;
+}
+
+
+/*------------ standards ------------*/
+
+.home-items ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.home-items ul li a:hover {
+    color: var(--main-bord-red)
+}
+
+
+/*------------ header ------------*/
+
+.page-header {
+    color: black;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.logo {
+    font-family: "GT-medium";
+    font-size: 36px;
+    text-align: center;
+}
+
+.home-items {
+    right: 10px;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+.home-items li {
+    display: inline;
+    font-size: 36px;
+    margin-right: 36px;
+    color: var(--main-grey);
+    transition: all .4s ease;
+}
+
+.home-items li:hover {
+    color: var(--main-bord-red);
+    text-shadow: var(--second-shadow);
+}
+
+.logo,
+.home-items {
+    align-self: center;
+}
+
+
+/*------------ page-wrapper ------------*/
+
+.page-wrapper {
+    display: grid;
+    grid-template-rows: 90px 1fr 80px;
+    text-align: center;
+}
+
+
+/*------------ footer-wrapper ------------*/
+
+.footer-wrapper {
+    background-color: white;
+    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+}
+
+.zuyd-logo,
+.made-by {
+    align-self: center;
+    justify-self: center;
 }
 
 

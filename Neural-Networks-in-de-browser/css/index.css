@@ -1,71 +1,55 @@
-body {
-    color: white;
+h1 {
+    font-size: 60px;
 }
 
 
-/*------------ index-page-wrapper ------------*/
+/*------------ hero-landing ------------*/
 
-.index-page-wrapper {
-    display: grid;
-    grid-template-rows: 1fr 80px;
-    text-align: center;
-}
-
-
-/*------------ NN-wrapper ------------*/
-
-.nn-wrapper {
+.hero-landing {
+    margin-top: 40px;
     background-color: var(--main-bord-red);
-    border-radius: 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 500px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.hero-title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-bottom: 0px;
+}
+
+.hero-left {
+    grid-row-start: 2;
     width: 500px;
     justify-self: center;
 }
 
-.nn-title {
-    text-shadow: var(--main-shadow);
+.hero-left-title {
+    font-size: 38px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-.nn-desc {
-    color: rgb(243, 243, 243);
-}
-
-.nn-output {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.upload-wrapper {
-    border: solid var(--main-bord-red);
-    transition: all .2s ease;
-    background-color: white;
-    border-radius: 100px;
-    color: var(--main-bord-red);
+.hero-left-desc {
     font-size: 20px;
-    margin: 10px;
-    padding: 6px;
-}
-
-.upload-wrapper:hover {
-    background-color: var(--main-bord-red);
-    color: white;
-    border: solid white;
-}
-
-
-/*------------ footer-wrapper ------------*/
-
-.footer-wrapper {
-    color: black;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100px 1fr;
-}
-
-.zuyd-logo,
-.made-by {
+    color: rgb(189, 187, 187);
     align-self: center;
-    justify-self: center;
+    text-align: center;
+}
+
+.hero-right {
+    display: grid;
+}
+
+button {
+    padding: 0.5em;
+    font-size: 1.5rem;
 }
