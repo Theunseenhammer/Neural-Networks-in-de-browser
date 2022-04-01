@@ -13,7 +13,7 @@ function gpuTrain() {
 
 
 
-    net.train(xorTrainingData, { iterations: 100000, log: true });
+    net.train(xorTrainingData, { iterations: 10000000, log: true, errorThresh: 0.0000000001 });
 
     console.log(net.run([0, 0]));
     console.log(net.run([0, 1]));
