@@ -1,4 +1,5 @@
 import { recurrent } from 'brain.js';
+import { NeuralNetworkGPU, NeuralNetwork } from 'brain.js'
 var network
     //Counter to know if output has changed
 var counter = 0
@@ -29,7 +30,10 @@ function trainNN() {
         window.alert("Please select a Dataset before training.");
     } else {
         //create new LSTM network called network
+
         network = new recurrent.LSTM();
+
+        //network = new NeuralNetworkGPU();
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
         console.log("Error Threshold used: " + ErrorThreshold)
@@ -111,7 +115,8 @@ function onReaderLoad(file) {
 function onReaderLoadDS(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
-    mapDS(obj)
+    //mapDS(obj)
+    trainingData = obj
 }
 
 function mapDS(file) {
