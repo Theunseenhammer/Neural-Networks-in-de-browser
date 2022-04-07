@@ -31,15 +31,17 @@ function trainNN() {
     } else {
         //create new LSTM network called network
 
-        network = new recurrent.LSTM();
+        //network = new recurrent.LSTM();
 
-        //network = new NeuralNetworkGPU();
+        network = new NeuralNetworkGPU();
+
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
         console.log("Error Threshold used: " + ErrorThreshold)
         network.train(trainingData, {
             iterations: Iteration,
             errorThresh: ErrorThreshold,
+            learningRate: 0.01,
             log: true
         })
 
