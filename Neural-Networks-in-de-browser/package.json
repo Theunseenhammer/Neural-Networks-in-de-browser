@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build --host",
+    "preview": "vite preview --host --port 3000",
+    "startservice": "vite build && vite preview --host --port 3000"
   },
   "devDependencies": {
     "vite": "^2.8.0"

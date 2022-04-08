@@ -9,7 +9,8 @@ RUN npm install prebuild-install node-pre-gyp node-gyp -g
 RUN npm install
 COPY . /app
 EXPOSE 3000
-CMD ["npm", "run", "dev"] 
+#CMD ["npm", "run", "build"]
+CMD ["npm", "run", "startservice"] 
 #run dit in de terminal om de docker image te bouwen, dit kan een aantal minuten duren.
 #op mijn systeem duurt dit ongeveer 3-5 minuten.
 #docker build -t neuralbrowser .
