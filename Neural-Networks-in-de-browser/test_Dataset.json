@@ -1,78 +1,78 @@
 [
     {
-      "text": "the user interface component is fixed",
-      "category": "frontend"
+      "input": "the user interface component is fixed",
+      "output": "frontend"
     },
     {
-      "text": "the css file look inituitive",
-      "category": "frontend"
+      "input": "the css file look inituitive",
+      "output": "frontend"
     },
     {
-      "text": "i need a few ui designs",
-      "category": "frontend"
+      "input": "i need a few ui designs",
+      "output": "frontend"
     },
     {
-      "text": "the database has issues",
-      "category": "backend"
+      "input": "the database has issues",
+      "output": "backend"
     },
     {
-      "text": "the button is centered",
-      "category": "frontend"
+      "input": "the button is centered",
+      "output": "frontend"
     },
     {
-      "text": "make it clickable",
-      "category": "frontend"
+      "input": "make it clickable",
+      "output": "frontend"
     },
     {
-      "text": "i did the api integration",
-      "category": "backend"
+      "input": "i did the api integration",
+      "output": "backend"
     },
     {
-      "text": "a driver code should have less memory usgae",
-      "category": "backend"
+      "input": "a driver code should have less memory usgae",
+      "output": "backend"
     },
     {
-      "text": "it needs more memory",
-      "category": "backend"
+      "input": "it needs more memory",
+      "output": "backend"
     },
     {
-      "text": "code with responsive design in users interface",
-      "category": "frontend"
+      "input": "code with responsive design in users interface",
+      "output": "frontend"
     },
     {
-      "text": "navigate the website easily",
-      "category": "frontend"
+      "input": "navigate the website easily",
+      "output": "frontend"
     },
     {
-      "text": "user login and authentication",
-      "category": "backend"
+      "input": "user login and authentication",
+      "output": "backend"
     },
     {
-      "text": "forms and dropdowns lists",
-      "category": "frontend"
+      "input": "forms and dropdowns lists",
+      "output": "frontend"
     },
     {
-      "text": "username password email are stored",
-      "category": "backend"
+      "input": "username password email are stored",
+      "output": "backend"
     },
     {
-      "text": "programming loading animation",
-      "category": "frontend"
+      "input": "programming loading animation",
+      "output": "frontend"
     },
     {
-      "text": "mysql, mongo, firebase databases",
-      "category": "backend"
+      "input": "mysql, mongo, firebase databases",
+      "output": "backend"
     },
     {
-      "text": "restful api is useful with backend",
-      "category": "backend"
+      "input": "restful api is useful with backend",
+      "output": "backend"
     },
     {
-        "text": "data access layer is not presentation layer",
-        "category": "backend"
+        "input": "data access layer is not presentation layer",
+        "output": "backend"
     },
     {
-        "text": "the web browser loads dynamic webpages slowly",
-        "category": "frontend"
+        "input": "the web browser loads dynamic webpages slowly",
+        "output": "frontend"
     }
 ]
