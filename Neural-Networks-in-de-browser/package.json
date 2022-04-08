@@ -11,6 +11,10 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
-    "brain.js": "^2.0.0-beta.4"
+    "brain.js": "^2.0.0-beta.4",
+    "easy-mnist": "^1.1.1",
+    "gpu.js": "^2.15.2",
+    "mnist": "^1.1.0",
+    "mnist-data": "^1.2.6"
   }
 }
