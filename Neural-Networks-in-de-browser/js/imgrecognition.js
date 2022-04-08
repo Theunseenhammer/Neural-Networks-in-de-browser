@@ -64,7 +64,7 @@ function msToHMS(ms) {
     seconds = seconds % 3600;
     var minutes = parseInt(seconds / 60);
     seconds = seconds % 60;
-    return (hours + ":" + minutes + ":" + seconds);
+    return ("\nHours " + hours + "\n" + "Minutes " + minutes + "\n" + "Seconds " + seconds);
 }
 
 
