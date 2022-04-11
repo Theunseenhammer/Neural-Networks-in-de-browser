@@ -3,8 +3,8 @@ import { NeuralNetwork, NeuralNetworkGPU } from 'brain.js'
 //Brain js
 var LearningRate = 0.01
     //learningrate
-var network
-    //Counter to know if output has changed
+var network = new NeuralNetwork();
+//Counter to know if output has changed
 var counter = 0
     //amount of training iterations
 var Iteration = 200
@@ -33,7 +33,7 @@ function trainNN() {
         window.alert("Please select a Dataset before training.");
     } else {
         var start = new Date().getTime();
-        network = new NeuralNetworkGPU();
+
 
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
@@ -146,6 +146,16 @@ function ChangeLearningRate() {
 function ErrorThresh() {
     ErrorThreshold = document.getElementById('Input-ErrorThresh').value;
     console.log("Error Threshold selected:" + ErrorThreshold)
+}
+
+function setGPU() {
+    if (this.checked) {
+        console.log("Selected neural network GPU")
+        network = new NeuralNetworkGPU();
+    } else {
+        console.log("Selected neural network CPU")
+        network = new NeuralNetwork();
+    }
 }
 
 
@@ -289,3 +299,4 @@ document.getElementById('Upload-Dataset').addEventListener('change', loadDataset
 document.getElementById('Iterations-Show').addEventListener('change', ChangeIterations)
 document.getElementById('LearningRate-Show').addEventListener('change', ChangeLearningRate)
 document.getElementById('Submit-ErrorThresh').addEventListener('click', ErrorThresh)
+document.getElementById('Gpu-check').addEventListener('change', setGPU, false)

@@ -11,14 +11,12 @@
 
     <div class="page-wrapper">
         <header class="page-header">
-            <div class="logo">GPU Neural Network method</div>
+            <div class="logo">Neural Net</div>
             <div class="home-items">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../views/LSTM.html">LSTM</a></li>
-                    <li><a href="../views/ffneuralnetwork.html">Neural Network</a></li>
-                    <li><a href="../views/ffneuralnetworkGPU.html">GPU</a></li>
-                    <li><a href="../views/imgrecognition.html">Images</a></li>
+                    <li><a href="../views/imgrecognition.html">Neural Net</a></li>
                 </ul>
             </div>
         </header>
@@ -37,6 +35,10 @@
                 Load neural network
             </label>
             <button id="Train-NN">Train neural network</button><br>
+            <div class="slidecontainer">
+                <h3>use gpu</h3>
+                <input type="checkbox" id="Gpu-check">
+            </div>
             <div class="slidecontainer">
                 <h3>Select Iterations</h3>
                 <input type="range" min="1" max="10000" value="200" class="slider" id="Input-Iterations">
@@ -68,7 +70,6 @@
             Gemaakt door: <strong> Max Kleinman, Jeremy Aué, Roy Wendries & Tonito Kusters-Hernandez </strong>
         </div>
     </footer>
-    <script type="module" src="../js/main.js"></script>
     <script type="module" src="../js/imgrecognition.js"></script>
 
 </body>
