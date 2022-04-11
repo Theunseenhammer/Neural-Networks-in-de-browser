@@ -42,7 +42,8 @@ function trainNN() {
             iterations: Iteration,
             errorThresh: ErrorThreshold,
             log: true,
-            learningRate: LearningRate
+            learningRate: LearningRate,
+            logPeriod: 1,
         })
 
         var end = new Date().getTime();
