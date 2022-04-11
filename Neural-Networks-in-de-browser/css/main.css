@@ -11,7 +11,7 @@
 :root {
     --font: 'GT-regular';
     --font-medium: 'GT-medium';
-    --main-bord-red: #800000;
+    --main-bord-red: #a01424;
     --main-shadow: 0px 19px 18px rgba(0, 0, 0, 0.25);
     --second-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -80,6 +80,69 @@ body {
     display: grid;
     grid-template-rows: 90px 1fr 80px;
     text-align: center;
+}
+
+
+/*------------ file-upload-wrapper ------------*/
+
+.file-upload-wrapper {
+    border: solid var(--main-bord-red);
+    transition: all .2s ease;
+    background-color: white;
+    border-radius: 100px;
+    color: var(--main-bord-red);
+    font-size: 20px;
+    margin: 10px;
+    padding: 6px;
+}
+
+.file-upload-wrapper:hover {
+    background-color: var(--main-bord-red);
+    color: white;
+    border: solid white;
+}
+
+
+/*------------ NN-wrapper ------------*/
+
+.nn-wrapper {
+    background-color: var(--main-bord-red);
+    border-radius: 10px 10px;
+    width: 500px;
+    justify-self: center;
+}
+
+.nn-title {
+    text-shadow: var(--main-shadow);
+}
+
+.nn-desc {
+    color: rgb(243, 243, 243);
+}
+
+.nn-output {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/*------------ upload-wrapper ------------*/
+
+.upload-wrapper {
+    border: solid var(--main-bord-red);
+    transition: all .2s ease;
+    background-color: white;
+    border-radius: 100px;
+    color: var(--main-bord-red);
+    font-size: 20px;
+    margin: 10px;
+    padding: 6px;
+}
+
+.upload-wrapper:hover {
+    background-color: var(--main-bord-red);
+    color: white;
+    border: solid white;
 }
 
 

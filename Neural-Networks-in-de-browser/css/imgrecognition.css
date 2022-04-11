@@ -1,3 +1,21 @@
+#canvas {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 1px solid black
+}
 
+#canvas-wrapper {
+    display: block;
+    margin: auto;
+    width: 150px;
+}
 
+#user-input-img img {
+    width: 50px;
+    border: 1px solid #dee2e6;
+}
 
+#user-input-img {
+    padding-top: 30px;
+}

@@ -1,5 +1,5 @@
 import { recurrent } from 'brain.js';
-import { NeuralNetworkGPU, NeuralNetwork } from 'brain.js'
+import { NeuralNetworkGPU, NeuralNetwork, CrossValidate } from 'brain.js';
 var network
     //Counter to know if output has changed
 var counter = 0
@@ -33,17 +33,23 @@ function trainNN() {
 
         network = new recurrent.LSTM();
 
-        //network = new NeuralNetworkGPU();
+        var start = new Date().getTime();
+
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
         console.log("Error Threshold used: " + ErrorThreshold)
         network.train(trainingData, {
             iterations: Iteration,
             errorThresh: ErrorThreshold,
-            log: true
+            learningRate: 0.3,
+            log: true,
+            logPeriod: 1,
         })
 
-        console.log("Training is complete")
+        var end = new Date().getTime();
+        var time = end - start;
+
+        console.log(`Training is completed in ${msToHMS(time)}`)
         const jsonTest = network.toJSON();
         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonTest));
         var dlAnchorElem = document.getElementById('downloadAnchorElem');
@@ -51,6 +57,16 @@ function trainNN() {
         dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
         dlAnchorElem.click();
     }
+}
+
+
+function msToHMS(ms) {
+    var seconds = ms / 1000;
+    var hours = parseInt(seconds / 3600);
+    seconds = seconds % 3600;
+    var minutes = parseInt(seconds / 60);
+    seconds = seconds % 60;
+    return ("\nHours " + hours + "\n" + "Minutes " + minutes + "\n" + "Seconds " + seconds);
 }
 
 function enterData() {
@@ -115,7 +131,7 @@ function onReaderLoad(file) {
 function onReaderLoadDS(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
-    //mapDS(obj)
+        //mapDS(obj)
     trainingData = obj
 }
 
