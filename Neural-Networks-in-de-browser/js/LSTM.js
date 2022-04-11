@@ -31,10 +31,9 @@ function trainNN() {
     } else {
         //create new LSTM network called network
 
-        // network = new recurrent.LSTM();
+        network = new recurrent.LSTM();
 
         var start = new Date().getTime();
-        network = new NeuralNetworkGPU();
 
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
