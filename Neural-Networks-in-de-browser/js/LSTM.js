@@ -1,19 +1,25 @@
+//NOTE!!!! THIS APP ONLY HAS TESTING FEATURES FOR THE ADDED LSTM TEST DATASET,
+// TRAINING WILL WORK WITH ANY DATASET HOWEVER!!!!
+
+//Import for Recurrent LSTM NN
 import { recurrent } from 'brain.js';
-import { NeuralNetworkGPU, NeuralNetwork, CrossValidate } from 'brain.js';
+
+//Var declaration for network selection
 var network
-    //Counter to know if output has changed
+
+//Counter to know if output has changed
 var counter = 0
-    //amount of training iterations
+
+//Var declaration for NN arguments
 var Iteration = 200
-    //Error threshold selected
 var ErrorThreshold = 0.005
-    //maped training data
-var trainingData
-    //The file
+
+//Var declarations for input files and data
 var uploadedJsonFile = {}
-    //The content
 var uploadedJsonData = {}
-    //Iterations slider
+var trainingData
+
+//Iterations slider
 var slider = document.getElementById("Input-Iterations");
 var output = document.getElementById("Iterations-Show");
 output.value = slider.value; // Display the default slider value
@@ -24,20 +30,19 @@ slider.oninput = function() {
     Iteration = this.value
 }
 
-//Train a NN
+//Training of a LSTM network
 function trainNN() {
     if (trainingData == null) {
         window.alert("Please select a Dataset before training.");
     } else {
         //create new LSTM network called network
-
         network = new recurrent.LSTM();
-
+        //Start timer
         var start = new Date().getTime();
-
         console.log("Training has begun")
         console.log("Number of iterations used: " + Iteration)
         console.log("Error Threshold used: " + ErrorThreshold)
+        //Train NN with selected training variables
         network.train(trainingData, {
             iterations: Iteration,
             errorThresh: ErrorThreshold,
@@ -46,20 +51,22 @@ function trainNN() {
             logPeriod: 1,
         })
 
+        //Stop timer and show time taken
         var end = new Date().getTime();
         var time = end - start;
 
+        //Save NN as Json file called Trained_LSTM_NN.json
         console.log(`Training is completed in ${msToHMS(time)}`)
         const jsonTest = network.toJSON();
         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonTest));
         var dlAnchorElem = document.getElementById('downloadAnchorElem');
         dlAnchorElem.setAttribute("href", dataStr);
-        dlAnchorElem.setAttribute("download", "leukebestandsnaam.json");
+        dlAnchorElem.setAttribute("download", "Trained_LSTM_NN.json");
         dlAnchorElem.click();
     }
 }
 
-
+//Function to show timer time in hrs, mins, secs
 function msToHMS(ms) {
     var seconds = ms / 1000;
     var hours = parseInt(seconds / 3600);
@@ -69,6 +76,7 @@ function msToHMS(ms) {
     return ("\nHours " + hours + "\n" + "Minutes " + minutes + "\n" + "Seconds " + seconds);
 }
 
+//Function for testing a trained model !!!!This testing only works for the added lstm test dataset!!!!
 function enterData() {
     if (typeof network == 'undefined') {
         window.alert("Please select or train a NN before testing.");
@@ -91,8 +99,8 @@ function enterData() {
     }
 }
 
-
-function showData() {
+//Start of filereader for pretrained NN's 
+function LoadNN() {
     uploadedJsonFile = document.getElementById('Upload-NN').files[0]
     var index = "NN"
     console.log(uploadedJsonFile)
@@ -100,7 +108,7 @@ function showData() {
     fileToJSON(uploadedJsonFile, index)
 }
 
-//Starts filereader and saves found data to var UploadedJsonData
+//Start of filereader that loads raw data, transforms and saves found data to var UploadedJsonData
 function loadDataset() {
     uploadedJsonFile = document.getElementById('Upload-Dataset').files[0]
     var index = "DS"
@@ -109,6 +117,7 @@ function loadDataset() {
     fileToJSON(uploadedJsonFile, index)
 }
 
+//Initializes new filereader and sends to Dataset reader or NN reader
 function fileToJSON(file, what) {
     var reader = new FileReader()
     if (what == "DS") {
@@ -119,28 +128,22 @@ function fileToJSON(file, what) {
     reader.readAsText(file)
 }
 
+//Pretrained NN reader
 function onReaderLoad(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
     uploadedJsonData = obj
-        //create new LSTM network called network
+    //create new LSTM network called network
     network = new recurrent.LSTM();
     network.fromJSON(uploadedJsonData)
 }
 
+//Raw dataset reader
 function onReaderLoadDS(file) {
     var obj = JSON.parse(file.target.result)
     console.log(obj)
         //mapDS(obj)
     trainingData = obj
-}
-
-function mapDS(file) {
-    trainingData = file.map(item => ({
-        input: item.text,
-        output: item.category
-    }));
-    console.log(trainingData)
 }
 
 //Convert bytes to kb
@@ -156,25 +159,22 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+//Change iterations to selected amount
 function ChangeIterations() {
     Iteration = document.getElementById('Iterations-Show').value;
     console.log("Number of iterations selected:" + Iteration)
 }
 
+//Change Error threshold to selected amount
 function ErrorThresh() {
     ErrorThreshold = document.getElementById('Input-ErrorThresh').value;
     console.log("Error Threshold selected:" + ErrorThreshold)
 }
 
+//Event listiners for all changables
 document.getElementById('Submit-input').addEventListener('click', enterData)
-
 document.getElementById('Train-NN').addEventListener('click', trainNN)
-
-//On upload(change) execute function LogData
-document.getElementById('Upload-NN').addEventListener('change', showData, false)
-
+document.getElementById('Upload-NN').addEventListener('change', LoadNN, false)
 document.getElementById('Upload-Dataset').addEventListener('change', loadDataset, false)
-
 document.getElementById('Iterations-Show').addEventListener('change', ChangeIterations)
-
 document.getElementById('Submit-ErrorThresh').addEventListener('click', ErrorThresh)
