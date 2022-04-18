@@ -43,7 +43,7 @@ npm run dev --host
 ```
 
 
-#Troubleshooting
+Troubleshooting
 If you're having trouble installing the project try downloading:
 - [build-tools] Microsoft's build tools
 - run commando: ```npm install --g --production windows-build-tools```
