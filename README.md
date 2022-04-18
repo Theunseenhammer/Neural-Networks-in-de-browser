@@ -68,4 +68,4 @@ MIT
    [node.js]: <https://nodejs.org/en/>
    [GPU.js]: <https://gpu.rocks/#/>
    [Vanilla Javascript]: <https://nl.wikipedia.org/wiki/JavaScript>
-   [build-tools]: <go.microsoft.com/fwlink/?LinkId=691126>
+   [build-tools]: <https://go.microsoft.com/fwlink/?LinkId=691126>
