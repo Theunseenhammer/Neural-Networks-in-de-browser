@@ -1,8 +1,7 @@
 # Neural Networks in de browser
 ## Tonito Kusters, Roy Wendries, Max Kleinman & Jeremy Aué
 
-This assignment was made by a group of students on behalf of the research lab Data Intelligence Zuyd hogeschool
-in the Netherlands.
+This assignment was made by a group of students on behalf of the research lab Data Intelligence@Zuyd in the Netherlands.
 The application demonstrates how neural networks could be created in the browser without using the host
 for computing. Each neural network is created using the users computing power. 
 
@@ -27,7 +26,7 @@ Neural Networks in the browser uses a number of tools to work properly:
 
 ## Installation
 
-Neural Networks in de browser is only testen in v16.14.12 [Node.js](https://nodejs.org/).
+Neural Networks in de browser is only tested in v16.14.12 [Node.js](https://nodejs.org/).
 
 Install the dependencies and devDependencies and start the server.
 
@@ -42,6 +41,15 @@ For hosting the server on your local network use
 ```sh
 npm run dev --host
 ```
+
+
+#Troubleshooting
+If you're having trouble installing the project try downloading:
+- go.microsoft.com/fwlink/?LinkId=691126
+- run commando: ```sh npm install --g --production windows-build-tools
+         
+```
+
 
 
 ## Docker
