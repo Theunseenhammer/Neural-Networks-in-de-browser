@@ -46,7 +46,7 @@ npm run dev --host
 #Troubleshooting
 If you're having trouble installing the project try downloading:
 - go.microsoft.com/fwlink/?LinkId=691126
-- run commando: ```sh npm install --g --production windows-build-tools```
+- run commando: ```npm install --g --production windows-build-tools```
          
 
 
