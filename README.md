@@ -1,13 +1,13 @@
 # Neural Networks in de browser
 ## Tonito Kusters, Roy Wendries, Max Kleinman & Jeremy Aué
 
-This assignment was made by a group of students on behalf of the research lab Data Intelligence@Zuyd in the Netherlands.
-The application demonstrates how neural networks could be created in the browser without using the host
-for computing. Each neural network is created using the users computing power. 
+This assignment was made by a group of students on behalf of the research lab Data Intelligence at Zuyd hogeschool in the Netherlands.
+The application demonstrates how neural networks can be created in the browser without using the server
+for computing. Each neural network is created using the clients computing power. 
 
 ## Features
 
-- Import a dataset and create your own neural network using LSTM
+- Import a dataset and create your own neural network using LSTM and Feed Forward methodes
 - Customize variables such as learning rate, errorthreshold and iterations.
 - Use your CPU or GPU to create neural networks.
 - Export created neural networks for later use.
@@ -26,7 +26,7 @@ Neural Networks in the browser uses a number of tools to work properly:
 
 ## Installation
 
-Neural Networks in de browser is only tested in v16.14.12 [Node.js](https://nodejs.org/).
+Neural Networks in the browser is only tested in v16.14.12 [Node.js](https://nodejs.org/).
 
 Install the dependencies and devDependencies and start the server.
 
