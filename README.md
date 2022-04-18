@@ -45,7 +45,7 @@ npm run dev --host
 
 #Troubleshooting
 If you're having trouble installing the project try downloading:
-- go.microsoft.com/fwlink/?LinkId=691126
+- [build-tools] Microsoft's build tools
 - run commando: ```npm install --g --production windows-build-tools```
          
 
@@ -68,3 +68,4 @@ MIT
    [node.js]: <https://nodejs.org/en/>
    [GPU.js]: <https://gpu.rocks/#/>
    [Vanilla Javascript]: <https://nl.wikipedia.org/wiki/JavaScript>
+   [build-tools] <go.microsoft.com/fwlink/?LinkId=691126>
