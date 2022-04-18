@@ -53,7 +53,17 @@ If you're having trouble installing the project try downloading:
 
 ## Docker
 
+First build the docker image using
 
+```bash
+docker build -t neuralbrowser .
+```
+
+Run the image using
+
+```bash
+docker run -p 80:8080 neuralbrowser
+```
 
 
 ## License
